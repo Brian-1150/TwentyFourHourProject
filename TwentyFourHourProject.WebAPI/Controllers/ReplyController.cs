@@ -27,13 +27,11 @@ namespace TwentyFourHourProject.WebAPI.Controllers
         //get reply by id or by comment
         public IHttpActionResult GetById(int id)
         {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var commentEntity = ctx.Comments.Single(p => p.CommentId == id);
-                var replyList = commentEntity.Replies;
+            ReplyService replyService = CreateReplyService();
+            var replies = replyService.GetRepliesbyCommentId(id);
 
-                return Ok(replyList);
-            }
+            return Ok(replies);
+            
         }
 
         public IHttpActionResult Post(ReplyCreate reply)

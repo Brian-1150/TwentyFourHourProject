@@ -9,7 +9,7 @@ namespace TwentyFourHourProject.Models
    public class ReplyListItem
     {
         public int ReplyId { get; set; }
-        public int CommentId { get; set; }
+        public string Text { get; set; }
        
 
 
