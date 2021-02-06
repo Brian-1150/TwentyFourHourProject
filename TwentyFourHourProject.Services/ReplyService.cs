@@ -11,6 +11,7 @@ namespace TwentyFourHourProject.Services
     public class ReplyService
     {
         private readonly Guid _userId;
+        public Comment _comment = new Comment();
 
         public ReplyService(Guid userId)
         {
@@ -24,11 +25,14 @@ namespace TwentyFourHourProject.Services
                 {
                     Author = _userId,
                     Text = model.Text,
+                    CommentId = model.CommentId
 
                 };
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.Replies.Add(entity);
+                
+               // _comment.Replies.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
 
@@ -52,5 +56,15 @@ namespace TwentyFourHourProject.Services
             }
 
         }
+
+        //public ReplyDetail GetReplyByCommentId(int id)
+        //{
+        //    using (var ctx = new ApplicationDbContext())
+        //    {
+        //        var entity =
+        //            ctx
+        //            .
+        //    }
+        //}
     }
 }

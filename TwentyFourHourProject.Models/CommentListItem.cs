@@ -7,12 +7,11 @@ using System.Threading.Tasks;
 
 namespace TwentyFourHourProject.Models
 {
-    public class ReplyCreate
+    public class CommentListItem
     {
-        [Required]
-        [MaxLength(100, ErrorMessage = "Please limit reply to less than 100 characters.")]
-        public string Text { get; set; }
-
         public int CommentId { get; set; }
+        public string Title { get; set; }
+        //[Display(Name = "Created")]
+        //public DateTimeOffset CreatedUtc { get; set; }
     }
 }
