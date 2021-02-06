@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using TwentyFourHourProject.Data;
 using TwentyFourHourProject.Models;
 using TwentyFourHourProject.Services;
 
@@ -22,11 +23,16 @@ namespace TwentyFourHourProject.WebAPI.Controllers
         }
 
         //get reply by id or by comment
-        //public IHttpActionResult Get(int id)
-        //{
-        //    ReplyService replyService = CreateReplyService();
-        //    var reply = ReplyService.GetReplyBy
-        //}
+        public IHttpActionResult GetById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var commentEntity = ctx.Comments.Single(p => p.CommentId == id);
+                var replyList = commentEntity.Replies;
+
+                return Ok(replyList);
+            }
+        }
 
         public IHttpActionResult Post(ReplyCreate reply)
         {

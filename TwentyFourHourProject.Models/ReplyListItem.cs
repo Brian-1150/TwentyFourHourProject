@@ -10,6 +10,8 @@ namespace TwentyFourHourProject.Models
     {
         public int ReplyId { get; set; }
         public int CommentId { get; set; }
+       
+
 
     }
 }

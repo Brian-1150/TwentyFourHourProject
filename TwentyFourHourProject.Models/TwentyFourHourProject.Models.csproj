@@ -101,5 +101,11 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TwentyFourHourProject.Data\TwentyFourHourProject.Data.csproj">
+      <Project>{2f12e98a-c0c3-44f2-97b2-e576c000ff9e}</Project>
+      <Name>TwentyFourHourProject.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

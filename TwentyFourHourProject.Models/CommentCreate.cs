@@ -12,5 +12,9 @@ namespace TwentyFourHourProject.Models
         [Required]
         [MaxLength(1000)]
         public string Text { get; set; }
+
+        [Required]
+        public int PostId { get; set; }
+
     }
 }

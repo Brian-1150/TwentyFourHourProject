@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,16 +24,14 @@ namespace TwentyFourHourProject.Services
             {
                 Author = _userId,
                 Text = model.Text,
-
+                PostId = model.PostId
             };
+
             using (var ctx = new ApplicationDbContext())
             {
-                
+
                 ctx.Comments.Add(entity);
-
-                //var post = ctx
-
-                return ctx.SaveChanges() == 1;
+                return ctx.SaveChanges() != 0;
             }
 
         }
@@ -49,28 +48,32 @@ namespace TwentyFourHourProject.Services
                     e =>
                         new CommentListItem
                         {
-                            CommentId = e.CommentId
+                            CommentId = e.CommentId,
+                            Text = e.Text
+
                         }
-                    ); 
+                    );
                 return query.ToArray();
             }
 
         }
-        // MODIFY TO ADD COMMENT TO POST COMMENT LIST
-        public IEnumerable<CommentListItem> A()
+       
+
+        public IEnumerable<CommentListItem> GetCommentsByPostId(int postId)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var query = ctx
                     .Comments
-                    .Where(e => e.Author == _userId)
+                    .Where(e => e.PostId == postId)
                     .Select(
                     e =>
                         new CommentListItem
                         {
-                            CommentId = e.CommentId
+                            CommentId = e.CommentId,
+                            Text = e.Text
                         }
-                    ); ; ;
+                    );
                 return query.ToArray();
             }
 

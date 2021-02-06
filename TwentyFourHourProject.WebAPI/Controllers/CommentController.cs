@@ -17,6 +17,7 @@ namespace TwentyFourHourProject.WebAPI.Controllers
         private CommentService CreateCommentService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
+            
             var commentService = new CommentService(userId);
             return commentService;
         }
@@ -39,11 +40,8 @@ namespace TwentyFourHourProject.WebAPI.Controllers
 
                 return Ok(commentList);
             }
-            
-               
+             
         }
-
-
 
         public IHttpActionResult Post(CommentCreate comment)
         {

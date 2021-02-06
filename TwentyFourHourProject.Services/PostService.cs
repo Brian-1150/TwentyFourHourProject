@@ -12,6 +12,7 @@ namespace TwentyFourHourProject.Services
     {
         private readonly Guid _userId;
 
+      
         public PostService(Guid userId)
         {
             _userId = userId;
@@ -72,7 +73,9 @@ namespace TwentyFourHourProject.Services
                         Title = entity.Title,
                         Text = entity.Text,
                         CreatedUtc = entity.CreatedUtc,
-                        ModifiedUtc = entity.ModifiedUtc
+                        ModifiedUtc = entity.ModifiedUtc,
+                       
+
                     };
             }
 
@@ -108,5 +111,22 @@ namespace TwentyFourHourProject.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+
+        //public void UpdatePostList(int postId, List<Comment> newComment)     //(List<Comment> newCommentToList, int postId)
+        //{
+        //    using (var ctx = new ApplicationDbContext())
+        //    {
+        //        var entity =
+        //            ctx
+        //                .Posts
+        //                .Single(e => e.PostId == postId);
+        //                entity.Title = entity.Title;
+        //                entity.Text = entity.Text;
+        //                entity.Comments.AddRange(newComment);
+        //        //entity.ModifiedUtc = DateTimeOffset.UtcNow;
+
+        //         ctx.SaveChanges();
+        //    }
+        //}
     }
 }

@@ -38,6 +38,29 @@ namespace TwentyFourHourProject.Services
 
         }
 
+       
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         public IEnumerable<ReplyListItem> GetReplies()
         {
             using (var ctx = new ApplicationDbContext())
