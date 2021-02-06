@@ -39,5 +39,12 @@ namespace TwentyFourHourProject.WebAPI.Controllers
 
             return Ok();
         }
+
+        public IHttpActionResult Get(int id)
+        {
+            PostService postService = CreatePostService();
+            var note = postService.GetPostById(id);
+            return Ok(note);
+        }
     }
 }
