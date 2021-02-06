@@ -27,6 +27,8 @@ namespace TwentyFourHourProject.Data
         [Required]
         public string Text { get; set; }
 
+        //Might need to add the datetime offset utc later
+
 
 
     }
