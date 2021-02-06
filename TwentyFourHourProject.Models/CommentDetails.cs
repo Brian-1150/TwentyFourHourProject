@@ -1,21 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace TwentyFourHourProject.Models
 {
-    public class CommentCreate
+    public class CommentDetails
     {
-        [Required]
-        [MaxLength(1000)]
+        public int CommentId { get; set; }
         public string Text { get; set; }
 
-        [Required]
-        public int PostId { get; set; }
-
-       
     }
 }

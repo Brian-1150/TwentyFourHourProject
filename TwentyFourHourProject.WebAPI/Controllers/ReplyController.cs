@@ -7,10 +7,12 @@ using System.Net.Http;
 using System.Web.Http;
 using TwentyFourHourProject.Data;
 using TwentyFourHourProject.Models;
+using TwentyFourHourProject.Data;
 using TwentyFourHourProject.Services;
 
 namespace TwentyFourHourProject.WebAPI.Controllers
 {
+
     [Authorize]
     public class ReplyController : ApiController
     {
@@ -47,12 +49,14 @@ namespace TwentyFourHourProject.WebAPI.Controllers
             //if (!AddReplyToList(reply))
             return Ok();
         }
-        
-        private ReplyService CreateReplyService()
-        {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var replyService = new ReplyService(userId);
+
+
+
+              private ReplyService CreateReplyService()
+          {
+           var userId = Guid.Parse(User.Identity.GetUserId());
+           var replyService = new ReplyService(userId);
             return replyService;
-        }
-    }
+       }
+   }
 }

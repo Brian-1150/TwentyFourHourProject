@@ -21,6 +21,7 @@ namespace TwentyFourHourProject.Data
         public Guid Author { get; set; }
         public virtual List<Comment> Comments { get; set; } = new List<Comment>();
         [Display(Name = "Created")]
+        // Datetimeoffset ? maybed needed?
         public DateTimeOffset CreatedUtc { get; set; }
         [Display(Name = "Modified")]
         public DateTimeOffset? ModifiedUtc { get; set; }

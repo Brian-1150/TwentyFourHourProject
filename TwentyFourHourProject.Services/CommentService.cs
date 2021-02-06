@@ -25,6 +25,7 @@ namespace TwentyFourHourProject.Services
                 Author = _userId,
                 Text = model.Text,
                 PostId = model.PostId
+
             };
 
             using (var ctx = new ApplicationDbContext())
@@ -37,28 +38,6 @@ namespace TwentyFourHourProject.Services
         }
 
         // Get comments by userid not needed
-        public IEnumerable<CommentListItem> GetComments()
-        {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var query = ctx
-                    .Comments
-                    .Where(e => e.Author == _userId)
-                    .Select(
-                    e =>
-                        new CommentListItem
-                        {
-                            CommentId = e.CommentId,
-                            Text = e.Text
-
-                        }
-                    );
-                return query.ToArray();
-            }
-
-        }
-       
-
         public IEnumerable<CommentListItem> GetCommentsByPostId(int postId)
         {
             using (var ctx = new ApplicationDbContext())
@@ -72,6 +51,7 @@ namespace TwentyFourHourProject.Services
                         {
                             CommentId = e.CommentId,
                             Text = e.Text
+
                         }
                     );
                 return query.ToArray();

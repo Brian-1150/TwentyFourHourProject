@@ -11,6 +11,7 @@ using TwentyFourHourProject.Services;
 
 namespace TwentyFourHourProject.WebAPI.Controllers
 {
+
     [Authorize]
     public class CommentController : ApiController
     {
