@@ -18,7 +18,7 @@ namespace TwentyFourHourProject.WebAPI.Controllers
         private CommentService CreateCommentService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
-            
+
             var commentService = new CommentService(userId);
             return commentService;
         }
@@ -34,14 +34,12 @@ namespace TwentyFourHourProject.WebAPI.Controllers
 
         public IHttpActionResult GetCommentsByPostId(int postId)
         {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var postEntity = ctx.Posts.Single(p => p.PostId == postId);
-                var commentList = postEntity.Comments;
+            CommentService commentService = CreateCommentService();
+            var comments = commentService.GetCommentsByPostId(postId);
 
-                return Ok(commentList);
-            }
-             
+            return Ok(comments);
+
+
         }
 
         public IHttpActionResult Post(CommentCreate comment)
