@@ -23,7 +23,7 @@ namespace TwentyFourHourProject.WebAPI.Controllers
             return commentService;
         }
 
-        // getting all - make get by postId
+        //getting all - make get by postId
         public IHttpActionResult Get()
         {
             CommentService commentService = CreateCommentService();
