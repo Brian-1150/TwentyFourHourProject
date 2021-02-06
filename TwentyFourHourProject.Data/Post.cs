@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace TwentyFourHourProject.Data
-{
+{ 
     public class Post
     {
         [Key]
@@ -19,9 +19,10 @@ namespace TwentyFourHourProject.Data
         public string Text { get; set; }
         [Required]
         public Guid Author { get; set; }
-        [Display(Name ="Created")]
+        public virtual List<Comment> Comments { get; set; } = new List<Comment>();
+        [Display(Name = "Created")]
         public DateTimeOffset CreatedUtc { get; set; }
-        [Display(Name ="Modified")]
+        [Display(Name = "Modified")]
         public DateTimeOffset? ModifiedUtc { get; set; }
     }
 }
