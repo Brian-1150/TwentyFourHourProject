@@ -59,5 +59,26 @@ namespace TwentyFourHourProject.Services
 
         }
 
+        public IEnumerable<CommentListItem> GetComments()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query = ctx
+                    .Comments
+                    .Where(e => e.Author == _userId)
+                    .Select(
+                    e =>
+                        new CommentListItem
+                        {
+                            CommentId = e.CommentId,
+                            Text = e.Text
+
+                        }
+                    );
+                return query.ToArray();
+            }
+
+        }
+
     }
 }
