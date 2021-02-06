@@ -26,9 +26,9 @@ namespace TwentyFourHourProject.Data
         public virtual Post Post { get; set; } // navigation
 
 
-        //[Display(Name ="Created")]
+        //[Display(Name = "Created")]
         //public DateTimeOffset CreatedUtc { get; set; }
-        // Potentially use during project
+        //Potentially use during project
 
 
     }
