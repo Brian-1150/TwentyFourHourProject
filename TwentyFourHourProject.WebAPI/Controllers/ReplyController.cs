@@ -13,12 +13,21 @@ namespace TwentyFourHourProject.WebAPI.Controllers
     [Authorize]
     public class ReplyController : ApiController
     {
+        //get all replies* prob not necessary
         public IHttpActionResult Get()
         {
             ReplyService replyService = CreateReplyService();
             var replies = replyService.GetReplies();
             return Ok(replies);
         }
+
+        //get reply by id or by comment
+        //public IHttpActionResult Get(int id)
+        //{
+        //    ReplyService replyService = CreateReplyService();
+        //    var reply = ReplyService.GetReplyBy
+        //}
+
         public IHttpActionResult Post(ReplyCreate reply)
         {
             if (!ModelState.IsValid)
@@ -28,6 +37,8 @@ namespace TwentyFourHourProject.WebAPI.Controllers
             if (!service.CreateReply(reply))
                 return InternalServerError();
 
+            //var 
+            //if (!AddReplyToList(reply))
             return Ok();
         }
         

@@ -13,5 +13,6 @@ namespace TwentyFourHourProject.Models
         [MaxLength(100, ErrorMessage = "Please limit reply to less than 100 characters.")]
         public string Text { get; set; }
 
+        public int CommentId { get; set; }
     }
 }
