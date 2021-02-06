@@ -38,13 +38,14 @@ namespace TwentyFourHourProject.Services
 
         }
 
-        public IEnumerable<ReplyListItem> GetReplies()
+
+        public IEnumerable<ReplyListItem> GetRepliesbyCommentId(int commentId)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var query = ctx
                     .Replies
-                    .Where(e => e.Author == _userId)
+                    .Where(e => e.CommentId == commentId)
                     .Select(
                     e =>
                         new ReplyListItem
