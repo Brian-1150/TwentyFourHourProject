@@ -46,5 +46,28 @@ namespace TwentyFourHourProject.WebAPI.Controllers
             var note = postService.GetPostById(id);
             return Ok(note);
         }
+
+        public IHttpActionResult Put(PostEdit post)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var service = CreatePostService();
+
+            if (!service.UpdatePost(post))
+                return InternalServerError();
+
+            return Ok();
+        }
+
+        public IHttpActionResult Delete(int id)
+        {
+            var service = CreatePostService();
+
+            if (!service.DeletePost(id))
+                return InternalServerError();
+
+            return Ok();
+        }
     }
 }

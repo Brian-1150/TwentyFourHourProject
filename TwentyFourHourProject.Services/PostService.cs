@@ -49,8 +49,8 @@ namespace TwentyFourHourProject.Services
                                 {
                                     PostId = e.PostId,
                                     Title = e.Title,
-                                        //CreatedUtc = e.CreatedUtc
-                                    }
+                                    //CreatedUtc = e.CreatedUtc
+                                }
                         );
 
                 return query.ToArray();
@@ -76,6 +76,37 @@ namespace TwentyFourHourProject.Services
                     };
             }
 
+        }
+
+        public bool UpdatePost(PostEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Posts
+                        .Single(e => e.PostId == model.PostId && e.Author == _userId);
+                entity.Title = model.Title;
+                entity.Text = model.Text;
+                entity.ModifiedUtc = DateTimeOffset.UtcNow;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public bool DeletePost(int postId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Posts
+                        .Single(e => e.PostId == postId && e.Author == _userId);
+
+                ctx.Posts.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
         }
     }
 }
