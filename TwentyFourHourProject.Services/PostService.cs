@@ -35,26 +35,47 @@ namespace TwentyFourHourProject.Services
             }
         }
 
-            public IEnumerable<PostListItem> GetPosts()
+        public IEnumerable<PostListItem> GetPosts()
+        {
+            using (var ctx = new ApplicationDbContext())
             {
-                using (var ctx = new ApplicationDbContext())
-                {
-                    var query =
-                        ctx
-                            .Posts
-                            .Where(e => e.Author == _userId)
-                            .Select(
-                                e =>
-                                    new PostListItem
-                                    {
-                                        PostId = e.PostId,
-                                        Title = e.Title,
+                var query =
+                    ctx
+                        .Posts
+                        .Where(e => e.Author == _userId)
+                        .Select(
+                            e =>
+                                new PostListItem
+                                {
+                                    PostId = e.PostId,
+                                    Title = e.Title,
                                         //CreatedUtc = e.CreatedUtc
                                     }
-                            );
+                        );
 
-                    return query.ToArray();
-                }
+                return query.ToArray();
             }
         }
+
+        public PostDetail GetPostById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Posts
+                        .Single(e => e.PostId == id && e.Author == _userId);
+                return
+                    new PostDetail
+                    {
+                        PostId = entity.PostId,
+                        Title = entity.Title,
+                        Text = entity.Text,
+                        CreatedUtc = entity.CreatedUtc,
+                        ModifiedUtc = entity.ModifiedUtc
+                    };
+            }
+
+        }
     }
+}
