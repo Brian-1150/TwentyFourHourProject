@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,10 +27,10 @@ namespace TwentyFourHourProject.Services
                 PostId = model.PostId
 
             };
-            
+
             using (var ctx = new ApplicationDbContext())
             {
-                
+
                 ctx.Comments.Add(entity);
                 return ctx.SaveChanges() != 0;
             }
@@ -50,11 +51,13 @@ namespace TwentyFourHourProject.Services
                         {
                             CommentId = e.CommentId,
                             Text = e.Text
+
                         }
-                    ); 
+                    );
                 return query.ToArray();
             }
 
         }
+
     }
 }

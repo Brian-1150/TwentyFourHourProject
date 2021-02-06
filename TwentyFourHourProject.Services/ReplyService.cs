@@ -38,8 +38,26 @@ namespace TwentyFourHourProject.Services
 
         }
 
+      public IEnumerable<ReplyListItem> GetReplies()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query = ctx
+                    .Replies
+                    .Where(e => e.Author == _userId)
+                    .Select(
+                    e =>
+                        new ReplyListItem
+                        {
+                            ReplyId = e.ReplyId
+                        }
+                    );
+                return query.ToArray();
+            }
 
+        }
         public IEnumerable<ReplyListItem> GetRepliesbyCommentId(int commentId)
+
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -58,14 +76,5 @@ namespace TwentyFourHourProject.Services
 
         }
 
-        //public ReplyDetail GetReplyByCommentId(int id)
-        //{
-        //    using (var ctx = new ApplicationDbContext())
-        //    {
-        //        var entity =
-        //            ctx
-        //            .
-        //    }
-        //}
-    }
+   }
 }

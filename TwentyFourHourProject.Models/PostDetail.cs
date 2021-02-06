@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TwentyFourHourProject.Data;
 
 namespace TwentyFourHourProject.Models
 {
@@ -16,5 +17,6 @@ namespace TwentyFourHourProject.Models
         public DateTimeOffset CreatedUtc { get; set; }
         [Display(Name ="Modified")]
         public DateTimeOffset? ModifiedUtc { get; set; }
+       //public virtual List<Comment> Comments { get; set; } = new List<Comment>(); *self referencing loop error
     }
 }
