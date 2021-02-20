@@ -27,6 +27,16 @@ namespace TwentyFourHourProject.Data.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+            context.Posts.AddOrUpdate(x => x.PostId,
+                new Post() { PostId = 11, Title = "Seeded", Text = "test text" },
+                new Post() { Author = Guid.Parse("6c17382b787440438cf7f9da8f5a8873"), Title = "Happy Birthday", Text = "I am 40" });
+                //new Post() { Author =   , Title = "Happy Birthday", Text = "I am 40" });
+
+            context.Users.AddOrUpdate(x => x.Id,
+                new ApplicationUser() { Email = "abc@abc.com", Id = "5c17382b787440438cf7f9da8f5a8873"  },
+                new ApplicationUser() { Email = "abcd@abcd.com", Id = Guid.NewGuid().ToString(), UserName = "abcd@abcd.com"}
+
+                );
         }
     }
 }
